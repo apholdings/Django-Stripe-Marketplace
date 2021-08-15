@@ -1,0 +1,6 @@
+django==3.2.6
+django-environ==0.4.5
+pillow==8.2.0
+stripe==2.58.0
+django-allauth==0.44.0
+django-tailwind==2.2.0
