@@ -60,3 +60,12 @@ class HomeView(View):
             'products':digital_products_data
         }
         return render(request, 'pages/index.html', context)
+
+
+class UserProductListView(View):
+    def get(self, request, *args, **kwargs):
+        products = Product.objects.filter(user=self.request.user)
+        context={
+            'products':products
+        }
+        return render(request, 'pages/products/user_productlist.html', context)
