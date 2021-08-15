@@ -33,13 +33,16 @@ INSTALLED_APPS = [
     'marketplace',
 
     'tailwind',
-    'theme'
+    'theme',
+
+    'accounts'
 ]
 TAILWIND_APP_NAME = 'theme'
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
+EMAIL_BACKEND='django.core.mail.backends.console.EmailBackend'
 
 NPM_BIN_PATH = "/usr/bin/npm"
 #NPM_BIN_PATH = r"C:\Program Files (x86)\nodejs\npm.cmd"
@@ -48,6 +51,10 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
+
+LOGIN_REDIRECT_URL = "/"
+ACCOUNT_LOGOUT_ON_GET = True
+AUTH_USER_MODEL="accounts.User"
 
 SITE_ID = 1
 
