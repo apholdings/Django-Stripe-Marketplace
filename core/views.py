@@ -110,12 +110,20 @@ class ProductUpdateView(LoginRequiredMixin, UpdateView):
 class ProductDetailView(View):
     def get(self, request, slug,*args, **kwargs):
         product = get_object_or_404(Product, slug=slug)
+
+        has_access = None
+
+        if self.request.user.is_authenticated:
+            if product in self.request.user.library.products.all():
+                has_access = True
+
         context={
             'product':product,
             
         }
         context.update({
-            'STRIPE_PUBLIC_KEY':settings.STRIPE_PUBLIC_KEY
+            'STRIPE_PUBLIC_KEY':settings.STRIPE_PUBLIC_KEY,
+            "has_access":has_access
         })
         return render(request, 'pages/products/detail.html', context)
 

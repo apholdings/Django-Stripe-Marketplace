@@ -23,6 +23,25 @@
 </div>
 <!-- This example requires Tailwind CSS v2.0+ -->
 <div >
+  {% if has_access %}
+  <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
+    <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+      <span class="block">Access your content</span>
+      <span class="block text-indigo-600">download </span>
+    </h2>
+
+    <div class="mt-8 flex lg:mt-0 lg:flex-shrink-0">
+      <div class="inline-flex rounded-md shadow">
+        <a href="{{product.content_url}}" target="_blank" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700">
+          Access URL
+        </a>
+        <a href="{{product.content_file.url}}" download class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700">
+          Download
+        </a>
+      </div>
+    </div>
+  </div>
+  {% else %}
   <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
     <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
       <span class="block">Ready to dive in?</span>
@@ -36,6 +55,7 @@
       </div>
     </div>
   </div>
+  {% endif %}
 </div>
 {% csrf_token %}
 {% endblock content %}
