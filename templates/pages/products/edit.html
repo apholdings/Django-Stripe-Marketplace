@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block navbar %}
+{% include 'components/navbar.html' %}
+{% endblock navbar %}
+
+{% block content %}
+
+<div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="bg-white overflow-hidden shadow rounded-lg">
+        <div class="px-4 py-5 sm:p-6">
+            <!-- Content goes here -->
+            <!-- This example requires Tailwind CSS v2.0+ -->
+                <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
+                    <h3 class="text-lg leading-6 font-medium text-gray-900">
+                        Edit product: {{object.name}}
+                    </h3>
+                </div>
+                <div class="ml-4 mt-2 flex-shrink-0">
+                    <div class="-ml-4 -mt-2 flex items-center justify-between flex-wrap sm:flex-nowrap">
+                        <div class="ml-4 mt-2">
+                        
+                                <form class="form-horizontal dark:text-dark-txt" method="post"  enctype="multipart/form-data">
+                                    {% csrf_token %}
+
+                                    <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                        <div class="max-w-lg flex justify-center px-6 pt-5 pb-6 border-2 dark:border-dark-third border-gray-300 border-dashed rounded-md">
+                                            {{form.thumbnail}}
+                                            <div class="space-y-1 text-center">
+                                                <div class="flex text-sm text-gray-600">
+                                                
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- This example requires Tailwind CSS v2.0+ -->
+                                    <div class="relative">
+                                    <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                                        <div class="w-full border-t dark:border-dark-second border-gray-300"></div>
+                                    </div>
+                                    <div class="relative flex justify-center my-4">
+                                        <span class="px-2 bg-white dark:bg-dark-second text-sm dark:text-dark-txt text-gray-500">
+                                        Product Details
+                                        </span>
+                                    </div>
+                                    </div>
+
+                                    <label for="photo" class="block text-sm font-medium dark:text-dark-txt text-gray-700">
+                                    Name
+                                    </label>
+                                    {{form.name}}
+
+                                    <label for="photo" class="block text-sm font-medium dark:text-dark-txt text-gray-700">
+                                    Description
+                                    </label>
+                                    {{form.description}}
+
+                                    <label for="photo" class="block text-sm font-medium dark:text-dark-txt text-gray-700">
+                                    Category
+                                    </label>
+                                    {{form.category}}
+
+                                    <label for="photo" class=" block text-sm font-medium dark:text-dark-txt text-gray-700">
+                                    Price, 100 = $1,00 | 1,000 = $10 | 10,000 = $100
+                                    </label>
+                                    {{form.price}}
+
+                                    <label for="photo" class="block text-sm font-medium dark:text-dark-txt text-gray-700">
+                                    Slug
+                                    </label>
+                                    <div class="mt-1 flex rounded-md shadow-sm">
+                                    <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 dark:border-dark-second dark:bg-dark-second border-gray-300 bg-gray-50 dark:text-dark-txt text-gray-500 sm:text-sm">
+                                        https://vudera.com/p/
+                                    </span>
+                                    {{form.slug}}
+                                    </div>
+
+                                    {{form.errors}}
+
+                                    <div class="relative">
+                                    <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                                        <div class="w-full border-t dark:border-dark-second border-gray-300"></div>
+                                    </div>
+                                    <div class="relative flex justify-center">
+                                        <span class="px-2 my-4 bg-white dark:bg-dark-second text-sm dark:text-dark-txt text-gray-500">
+                                        What are you selling?
+                                        </span>
+                                    </div>
+                                    </div>
+
+                                    
+
+
+                                    <label for="photo" class="block text-sm font-medium dark:text-dark-txt text-gray-700">
+                                    URL (Optional: paid url products)
+                                    </label>
+                                    
+                                    {{form.content_url}}
+                                    
+
+                                    <label for="photo" class="block text-sm font-medium dark:text-dark-txt text-gray-700">
+                                    Upload Content
+                                    </label>
+                                    <div class="mt-1 sm:mt-0 sm:col-span-2">
+
+                                    <div class="max-w-lg flex justify-center px-6 pt-5 pb-6 border-2 dark:border-dark-third border-gray-300 border-dashed rounded-md">
+                                    {{form.content_file}}
+                                    <div class="space-y-1 text-center">
+                                        <div class="flex text-sm text-gray-600">
+                                        
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                    </div>
+
+                                    <label for="photo" class="block text-sm font-medium dark:text-dark-txt text-gray-700">
+                                    Publish or Draft?
+                                    </label>
+                                    {{form.active}}
+
+                                    <span class=" text-red-500">{{form.errors}}</span>
+
+
+                                    <div class="control-group">
+                                    <div class="controls">
+                                        
+                                        <button type="submit" class="mt-4 inline-flex float-right items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded dark:text-dark-txt text-indigo-700 dark:bg-dark-third bg-indigo-100 dark:hover:bg-dark-third hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-dark-third focus:ring-indigo-500">
+                                        Save</button>
+                                    </div>
+                                    </div>
+
+
+                                </form>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block footer %}
+
+{% endblock footer %}
+
+
+{% block javascript %}
+
+{% endblock javascript %}
