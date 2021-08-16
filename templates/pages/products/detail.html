@@ -30,14 +30,14 @@
     </h2>
     <div class="mt-8 flex lg:mt-0 lg:flex-shrink-0">
       <div class="inline-flex rounded-md shadow">
-        <a href="#" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
+        <button type="submit" id="checkout-button" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
           Buy Now
-        </a>
+        </button>
       </div>
     </div>
   </div>
 </div>
-
+{% csrf_token %}
 {% endblock content %}
 
 {% block footer %}
@@ -46,5 +46,42 @@
 
 
 {% block javascript %}
+
+<script type="text/javascript">
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+    // Create and instance of the stripe object with your publishable API key
+    var stripe = Stripe('{{ STRIPE_PUBLIC_KEY }}');
+
+    var checkoutButton = document.getElementById('checkout-button');
+
+    checkoutButton.addEventListener('click', function() {
+        //Create a new Checkout session using the server-side endpoint yout
+        //create in step 3
+
+        fetch("{% url 'create-checkout-session' product.slug %}", {
+            method: 'POST',
+            headers: {'X-CSRFToken': csrftoken}
+        })
+        .then(function(response){
+            return response.json();
+        })
+        .then(function(session){
+            console.log(session)
+            return stripe.redirectToCheckout({ sessionId: session.id });
+        })
+        .then(function(result){
+            // If 'redirectToCheckout' fails due to a browser or network
+            // error, you should display the localized error message to your
+            // customer using 'error.message'
+            if (result.error) {
+                alert(result.error.message);
+            }
+        })
+        .catch(function(error){
+            console.error('Error', error);
+        });
+    });
+</script>
 
 {% endblock javascript %}
