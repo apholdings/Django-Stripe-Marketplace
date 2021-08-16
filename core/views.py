@@ -83,3 +83,12 @@ class ProductUpdateView(LoginRequiredMixin, UpdateView):
 
     def get_success_url(self):
         return reverse("product-list")
+
+
+class ProductDetailView(View):
+    def get(self, request, slug,*args, **kwargs):
+        product = get_object_or_404(Product, slug=slug)
+        context={
+            'product':product
+        }
+        return render(request, 'pages/products/detail.html', context)

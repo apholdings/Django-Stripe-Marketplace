@@ -38,7 +38,7 @@
               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                 {% if product.thumbnail %}
                 <div class="flex-shrink-0">
-                    <a href="#">
+                    <a href="{% url 'product-detail' product.slug %}">
                     <img class="h-48 w-full object-cover" src="{{ product.thumbnail.url }}" alt="{{product.name}}">
                     </a>
                 </div>
