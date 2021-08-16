@@ -12,7 +12,8 @@ ProductUpdateView,
 ProductDetailView, 
 CreateCheckoutSessionView,
 SuccessView,
-stripe_webhook
+stripe_webhook,
+UserLibraryView
 )
 
 urlpatterns = [
@@ -24,7 +25,7 @@ urlpatterns = [
     path('create-checkout-session/<slug>/', CreateCheckoutSessionView.as_view(), name="create-checkout-session"),
     path("success/", SuccessView.as_view(), name="success"),
     path("webhooks/stripe/", stripe_webhook, name="stripe-webhook"),
-
+    path("library/<username>/", UserLibraryView.as_view(), name="library"),
 
     path('', HomeView.as_view(), name="home"),
     path('products/', UserProductListView.as_view(), name="product-list"),

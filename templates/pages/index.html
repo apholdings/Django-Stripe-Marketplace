@@ -194,7 +194,7 @@
             <i class='bx bxs-plus-circle'></i>
             <span class="text-xs sm:text-sm font-semibold text-gray-500 dark:text-dark-txt">Create a Product</span>
         </a> {% endcomment %}
-        <a href="#" class="w-1/3 flex space-x-2 justify-center items-center hover:bg-gray-100 dark:hover:bg-dark-third text-xl sm:text-3xl py-2 rounded-lg cursor-pointer text-yellow-500">
+        <a href="{% url 'library' user.username %}" class="w-1/3 flex space-x-2 justify-center items-center hover:bg-gray-100 dark:hover:bg-dark-third text-xl sm:text-3xl py-2 rounded-lg cursor-pointer text-yellow-500">
             <i class='bx bx-library'></i>
             <span class="text-xs sm:text-sm font-semibold text-gray-500 dark:text-dark-txt">Library</span>
         </a>
